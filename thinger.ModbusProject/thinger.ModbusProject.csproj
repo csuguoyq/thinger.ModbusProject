@@ -8,4 +8,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="10.0.14" />
+    <PackageReference Include="thinger.DataConvertLib" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\thinger.ModbusRTULib\thinger.ModbusRTULib.csproj" />
+  </ItemGroup>
+
 </Project>

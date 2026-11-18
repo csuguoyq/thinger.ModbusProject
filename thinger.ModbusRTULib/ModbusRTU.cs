@@ -9,6 +9,17 @@ using System.Threading.Tasks;
 
 namespace thinger.ModbusRTULib
 {
+    /// <summary>
+    /// 存储区
+    /// </summary>
+    public enum StoreArea
+    {
+        输出线圈,
+        输入线圈,
+        输出寄存器,
+        输入寄存器
+    }
+
     public class ModbusRTU
     {
         /// <summary>

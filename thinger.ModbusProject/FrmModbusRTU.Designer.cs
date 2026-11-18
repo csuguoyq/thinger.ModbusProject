@@ -45,8 +45,8 @@
             cmb_Port = new ComboBox();
             groupBox2 = new GroupBox();
             label13 = new Label();
-            listView1 = new ListView();
-            textBox4 = new TextBox();
+            lsv_ReadInfo = new ListView();
+            txt_WriteData = new TextBox();
             txt_ReadLength = new TextBox();
             txt_StartAddress = new TextBox();
             txt_SlaveId = new TextBox();
@@ -60,6 +60,8 @@
             label8 = new Label();
             cmb_StoreArea = new ComboBox();
             label7 = new Label();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -86,7 +88,6 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "通信参数";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // btn_Disconnect
             // 
@@ -96,6 +97,7 @@
             btn_Disconnect.TabIndex = 13;
             btn_Disconnect.Text = "断开连接";
             btn_Disconnect.UseVisualStyleBackColor = true;
+            btn_Disconnect.Click += btn_Disconnect_Click;
             // 
             // btn_Connect
             // 
@@ -105,7 +107,7 @@
             btn_Connect.TabIndex = 12;
             btn_Connect.Text = "建立连接";
             btn_Connect.UseVisualStyleBackColor = true;
-            btn_Connect.Click += button1_Click;
+            btn_Connect.Click += btn_Connect_Click;
             // 
             // label6
             // 
@@ -183,7 +185,6 @@
             label2.Size = new Size(44, 17);
             label2.TabIndex = 3;
             label2.Text = "波特率";
-            label2.Click += label2_Click;
             // 
             // cmb_BaudRate
             // 
@@ -213,8 +214,8 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(label13);
-            groupBox2.Controls.Add(listView1);
-            groupBox2.Controls.Add(textBox4);
+            groupBox2.Controls.Add(lsv_ReadInfo);
+            groupBox2.Controls.Add(txt_WriteData);
             groupBox2.Controls.Add(txt_ReadLength);
             groupBox2.Controls.Add(txt_StartAddress);
             groupBox2.Controls.Add(txt_SlaveId);
@@ -242,24 +243,27 @@
             label13.Name = "label13";
             label13.Size = new Size(56, 17);
             label13.TabIndex = 28;
-            label13.Text = "起始地址";
-            label13.Click += label13_Click;
+            label13.Text = "读取信息";
             // 
-            // listView1
+            // lsv_ReadInfo
             // 
-            listView1.Location = new Point(13, 196);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(577, 148);
-            listView1.TabIndex = 27;
-            listView1.UseCompatibleStateImageBehavior = false;
+            lsv_ReadInfo.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
+            lsv_ReadInfo.Location = new Point(13, 196);
+            lsv_ReadInfo.Name = "lsv_ReadInfo";
+            lsv_ReadInfo.Size = new Size(577, 148);
+            lsv_ReadInfo.TabIndex = 27;
+            lsv_ReadInfo.UseCompatibleStateImageBehavior = false;
+            lsv_ReadInfo.View = View.Details;
+            lsv_ReadInfo.FullRowSelect = true;
+            lsv_ReadInfo.GridLines = true;
             // 
-            // textBox4
+            // txt_WriteData
             // 
-            textBox4.Font = new Font("宋体", 10.5F, FontStyle.Regular, GraphicsUnit.Point, 134);
-            textBox4.Location = new Point(159, 132);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(197, 23);
-            textBox4.TabIndex = 26;
+            txt_WriteData.Font = new Font("宋体", 10.5F, FontStyle.Regular, GraphicsUnit.Point, 134);
+            txt_WriteData.Location = new Point(159, 132);
+            txt_WriteData.Name = "txt_WriteData";
+            txt_WriteData.Size = new Size(197, 23);
+            txt_WriteData.TabIndex = 26;
             // 
             // txt_ReadLength
             // 
@@ -373,6 +377,16 @@
             label7.TabIndex = 11;
             label7.Text = "从站地址";
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "日期时间";
+            columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "信息内容";
+            columnHeader2.Width = 300;
+            // 
             // FrmModbusRTU
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -419,10 +433,12 @@
         private ComboBox cmb_StoreArea;
         private Label label7;
         private Label label13;
-        private ListView listView1;
-        private TextBox textBox4;
+        private ListView lsv_ReadInfo;
+        private TextBox txt_WriteData;
         private TextBox txt_ReadLength;
         private TextBox txt_StartAddress;
         private TextBox txt_SlaveId;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
     }
 }
